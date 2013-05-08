@@ -452,7 +452,7 @@ int write_pbp_part1(NPBASE *np, FILE *fp, char *iso_name)
 
 	ico1_buf = load_file_from_ISO(iso_name, "/PSP_GAME/ICON1.PMF", &ico1_size);
 	if(ico1_buf==NULL)
-		ico1_buf = load_file("ICON1.PNG", &ico1_size);
+		ico1_buf = load_file("ICON1.PMF", &ico1_size);
 
 	pic0_buf = load_file_from_ISO(iso_name, "/PSP_GAME/PIC0.PNG",  &pic0_size);
 	if(pic0_buf==NULL)
@@ -710,7 +710,7 @@ int main(int argc, char *argv[])
 	show_isoinfo(iso_name, iso_block, iso_size);
 
 
-	printf("Onput: %s\n", pbp_name);
+	printf("Output: %s\n", pbp_name);
 	
 	// create PBP file
 	pbp_fp = fopen(pbp_name, "wb");
@@ -821,7 +821,7 @@ int main(int argc, char *argv[])
 	fseek(pbp_fp, table_offset, SEEK_SET);
 	fwrite(table_buf, table_size, 1, pbp_fp);
 	fclose(pbp_fp);
-	printf("Down.\n");
+	printf("Done.\n");
 	return 0;
 
 _help:
